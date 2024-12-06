@@ -1,0 +1,123 @@
+name: train_stage2
+
+epochs: 50
+checkpoint_freq: 10
+val_freq: 5
+
+loss:
+  keypoints_loss:
+    type: ScoreLoss
+    ScoreLoss:
+      weight: 0.0
+      mode: mse  # mse or mae or mse-whole
+      use_mask: true
+    LogitsLoss:
+      weight: 0.0
+      mode: mse  # bce or mse
+      cell_size: 8
+
+  descriptors_loss:
+    type: DescriptorsLoss
+    DescriptorsLoss:
+      mode: mae  # 'mse' or 'dual-softmax' or 'mae' or 'cosine_similarity'
+      desc_type: normalized  # 'normalized' or 'raw' or 'coarse'
+      weight: 0.0
+      use_mask: true  # true or false
+      mae+triplet:
+        mae_weight: 1.0
+        triplet_weight: 100.0
+
+  matcher_loss:
+    type: NLLLoss
+    MNNLoss:
+      weight: 1.0
+    NLLLoss:
+      weight: 1.0
+      nll_balancing: 1.0
+    
+
+optimizer:
+  type: AdamW
+  lr: 0.0001
+  Adam:
+    lr: ${train.optimizer.lr}
+    weight_decay: 0.0001
+    amsgrad: false
+    betas: [0.9, 0.999]
+    eps: 1e-08
+  AdamW:
+    lr: ${train.optimizer.lr}
+    weight_decay: 0.00001
+    amsgrad: false
+    betas: [0.9, 0.999]
+    eps: 1e-08
+  SGD:
+    lr: ${train.optimizer.lr}
+    momentum: 0.9
+    weight_decay: 0.0001
+    dampening: 0
+    nesterov: false
+
+scheduler:
+  type: CosineAnnealingLR
+  StepLR:
+    step_size: 200
+    gamma: 0.1
+    last_epoch: -1
+  MultiStepLR:
+    milestones: [10, 20, 30]
+    gamma: 0.1
+    last_epoch: -1
+  ExponentialLR:
+    gamma: 0.1
+    last_epoch: -1
+  CosineAnnealingLR:
+    T_max: ${train.epochs}
+    eta_min: 0.0000001
+    last_epoch: -1
+  ReduceLROnPlateau:
+    mode: min
+    factor: 0.1
+    patience: 10
+    threshold: 0.0001
+    threshold_mode: rel
+    cooldown: 0
+    min_lr: 0
+    eps: 1e-08
+  CosineAnnealingWarmRestarts:
+    T_0: 10
+    T_mult: 1
+    eta_min: 0
+    last_epoch: -1
+  CyclicLR:
+    base_lr: 0.001
+    max_lr: 0.1
+    step_size_up: 2000
+    step_size_down: null
+    mode: 'triangular'
+    gamma: 1.0
+    scale_fn: null
+    scale_mode: 'cycle'
+    cycle_momentum: true
+    base_momentum: 0.8
+    max_momentum: 0.9
+    last_epoch: -1
+  OneCycleLR:
+    max_lr: 0.1
+    total_steps: null
+    epochs: 10
+    steps_per_epoch: null
+    pct_start: 0.3
+    anneal_strategy: 'cos'
+    cycle_momentum: true
+    base_momentum: 0.85
+    max_momentum: 0.95
+    div_factor: 25.0
+    final_div_factor: 10000.0
+    last_epoch: -1
+  LambdaLR:
+    lr_lambda: null
+    last_epoch: -1
+  MultiplicativeLR:
+    lr_lambda: null
+    last_epoch: -1

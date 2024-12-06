@@ -1,0 +1,38 @@
+experiment: default
+
+resume:
+
+logger:
+  status_freq: 10
+  files_to_backup: ['train.py', 'val.py']
+  dirs_to_backup: ['configs', 'core', 'datasets', 'utils']
+
+setup:
+  mixed_precision: false
+  seed: 42
+  cudnn_enabled: true
+  allow_tf32: false
+  num_threads: 0
+
+  device: cuda
+  gpus: [0]
+
+  local_rank: -1
+
+wandb:
+  key: your_own_key
+  project: test
+  group: test
+  name: test
+  notes: only train event keypoints extractor
+  tags: [test]
+
+  dryrun: true
+
+
+defaults:
+  - _self_
+  - dataset: mvsec
+  - model: EIE
+  - train: train_default
+

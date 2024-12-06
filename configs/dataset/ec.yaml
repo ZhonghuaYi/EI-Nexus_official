@@ -1,0 +1,52 @@
+name: ec
+
+data_path: data/EC
+train_on_rpe_data: false
+representation_type: VoxelGrid
+channel: 16
+event_dt: 0.04
+select_matching_pair: false
+
+train:
+  data_path: data/MVSEC
+  batch_size: 8
+  num_workers: 8
+
+  shuffle: true
+  pin_memory: true
+  drop_last: true
+
+  event_point_aug:
+    time_scale: [0.8, 1.2]
+    slice_dt: [35, 40]
+    slice_mode: random
+    flip_p: 0.5
+    xy_std: 1.5
+    ts_std: 0.5
+    add_percent: [0.001, 0.01]
+    del_percent: [0.001, 0.01]
+  
+  image_aug:
+    gamma_p: 0.1
+    gamma_limit: [15, 65]
+    saturation_p: 0.  # not applicable for grayscale
+    val_shift_limit: [-100, -40]
+    brightness_p: 0.5
+    brightness_limit: [-0.3, 0.0]
+    contrast_limit: [-0.5, 0.3]
+    noise_p: 0.5
+
+  pair_aug:
+    crop_size: [160, 160]
+    flip_p_h: 0.5
+    flip_p_w: 0.5
+    rotate_angle: 10.0
+
+val:
+  batch_size: 1  # 1 for evaluation
+  num_workers: 8
+  shuffle: false
+  pin_memory: true
+  drop_last: false
+
+  padding_size: 8

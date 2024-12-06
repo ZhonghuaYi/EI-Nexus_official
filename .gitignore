@@ -1,0 +1,11 @@
+data/
+.idea/
+*/__pycache__/*
+outputs/
+wandb/
+runs/
+ckpts/
+*.pyc
+*.ckpt
+*.log
+*.npy

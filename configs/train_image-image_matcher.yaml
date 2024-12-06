@@ -1,0 +1,37 @@
+experiment: mvsec-SP+LG-I-I-left_0.40s-16c-voxel_normalize-0.0001-top1024
+resume:
+
+logger:
+  status_freq: 10
+  files_to_backup: ['train.py', 'val.py']
+  dirs_to_backup: ['configs', 'core', 'datasets', 'utils']
+
+setup:
+  mixed_precision: false
+  seed: 42
+  cudnn_enabled: true
+  allow_tf32: false
+  num_threads: 8
+
+  device: cuda
+  gpus: [0]
+
+  local_rank: -1
+
+wandb:
+  key: your_own
+  project: project_name
+  group: group_name
+  name: ${experiment}
+  notes: 
+  tags: []
+
+  dryrun: false
+
+
+defaults:
+  - _self_
+  - dataset: mvsec_VT
+  - model: SuperpointMatcher
+  - train: train_stage2
+
