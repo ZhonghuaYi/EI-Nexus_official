@@ -56,6 +56,8 @@ To prepare the MVSEC and EC data, download them from the following links:
 <mark>TODO:</mark> The benchmark data of MVSEC and EC will be uploaded soon.
 
 ## Reproduce Results
+Checkpoints of MVSEC and EC data are in [release](https://github.com/ZhonghuaYi/EI-Nexus_official/releases) page.
+
 To reproduce keypoint extraction results, run the `test_events-image_same_time.py`:
 ```shell
 python test_events-image_same_time.py
