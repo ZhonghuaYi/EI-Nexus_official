@@ -5,14 +5,14 @@
 <br>
 <div align="center">
   <b>
-  <a href="https://www.researchgate.net/profile/Zhonghua-Yi" target="_blank">Zhonghua&nbsp;Yi</a> &middot;
-  <a href="https://www.researchgate.net/profile/Shi-Hao-10" target="_blank">Hao&nbsp;Shi</a> &middot;
-  <a href="https://www.researchgate.net/profile/Qi-Jiang-63" target="_blank">Qi&nbsp;Jiang</a> &middot;
-  <a href="https://www.researchgate.net/profile/Kailun-Yang" target="_blank">Kailun&nbsp;Yang</a> &middot;
-  <a href="https://www.researchgate.net/profile/Ze-Wang-42" target="_blank">Ze&nbsp;Wang</a> &middot;
+  <a href="https://github.com/ZhonghuaYi" target="_blank">Zhonghua&nbsp;Yi</a> &middot;
+  <a href="https://github.com/MasterHow" target="_blank">Hao&nbsp;Shi</a> &middot;
+  <a href="https://github.com/zju-jiangqi" target="_blank">Qi&nbsp;Jiang</a> &middot;
+  <a href="https://scholar.google.com/citations?user=pKFqWhgAAAAJ" target="_blank">Kailun&nbsp;Yang</a> &middot;
+  <a href="https://github.com/flysoaryun" target="_blank">Ze&nbsp;Wang</a> &middot;
   Diyang&nbsp;Gu &middot;
   Yufan&nbsp;Zhang &middot;
-  <a href="https://www.researchgate.net/profile/Kaiwei-Wang-4" target="_blank">Kaiwei&nbsp;Wang</a> 
+  <a href="https://scholar.google.com/citations?user=B6xWNvgAAAAJ" target="_blank">Kaiwei&nbsp;Wang</a> 
   </b>
   <br> <br>
 
