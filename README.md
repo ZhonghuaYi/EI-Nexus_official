@@ -32,7 +32,7 @@
 
 
 ## News and ToDo
-- [ ] Release benchmark data.
+- [x] Release benchmark data.
 - [x] Release code and checkpoints.
 
 ## Requirements 
@@ -53,7 +53,42 @@ conda activate ei_nexus
 ## Data preparation
 To prepare the MVSEC and EC data, download them from the following links:
 
-<mark>TODO:</mark> The benchmark data of MVSEC and EC will be uploaded soon.
+[MVSEC_RPE](https://huggingface.co/datasets/Zhonghua/MVSEC_RPE/tree/main)
+
+[EC_RPE](https://huggingface.co/datasets/Zhonghua/EC_RPE/tree/main)
+
+After downloading the datasets, create `data` folder and move extracted datasets in it.
+The struture of the `data` folder should be as following:
+```
+data
+├── EC
+│   ├── boxes_6dof
+│   ├── boxes_rotation
+│   ├── boxes_rotation_val.txt
+│   ├── boxes_translation
+│   ├── boxes_translation_val.txt
+│   ├── calibration
+│   ├── hdr_boxes
+│   ├── new_boxes_rotation_val.txt
+│   ├── new_boxes_translation_val.txt
+│   ├── new_shapes_6dof_val.txt
+│   ├── new_shapes_rotation_val.txt
+│   ├── new_shapes_translation_val.txt
+│   ├── poster_6dof
+│   ├── poster_rotation
+│   ├── poster_translation
+│   ├── shapes_6dof
+│   ├── shapes_6dof_val.txt
+│   ├── shapes_rotation
+│   ├── shapes_rotation_val.txt
+│   ├── shapes_translation
+│   └── shapes_translation_val.txt
+└── MVSEC
+    ├── indoor_flying
+    ├── indoor_flying_calib
+    ├── outdoor_day
+    └── outdoor_day_calib
+```
 
 ## Reproduce Results
 Checkpoints of MVSEC and EC data are in [release](https://github.com/ZhonghuaYi/EI-Nexus_official/releases) page.
@@ -94,4 +129,4 @@ If you find our work useful in your research, please consider citing:
 ```
 
 ## Acknowledgement
-EI-Nexus is built on top of [LightGlue](https://github.com/cvg/LightGlue) and [SiLK](https://github.com/facebookresearch/silk) codebases. We appreciate the authors for their greate work and follow the License of EI-Nexus.
+EI-Nexus is built on top of [LightGlue](https://github.com/cvg/LightGlue), [SiLK](https://github.com/facebookresearch/silk) and [DeepEvTracker](https://github.com/uzh-rpg/deep_ev_tracker) codebases. We appreciate the authors for their greate work and follow the License of EI-Nexus.
