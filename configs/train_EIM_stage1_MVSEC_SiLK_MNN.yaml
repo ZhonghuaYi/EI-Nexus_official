@@ -1,0 +1,37 @@
+experiment: nexus_MVSEC_stage1_SiLK_MNN_lr1e-3
+resume: 
+
+logger:
+  status_freq: 10
+  files_to_backup: ['train_extractor.py', 'val_extractor.py']
+  dirs_to_backup: ['configs', 'core', 'datasets', 'utils']
+
+setup:
+  mixed_precision: false
+  seed: 42
+  cudnn_enabled: true
+  allow_tf32: false
+  num_threads: 8
+
+  device: cuda
+  gpus: [0]
+
+  local_rank: -1
+
+wandb:
+  key: c12cd6f9f3582bc27cb249e014c77aef34fb6732
+  project: nexus_test
+  group: EIM_stage1
+  name: ${experiment}
+  notes: 
+  tags: []
+
+  dryrun: false
+
+
+defaults:
+  - _self_
+  - dataset: mvsec
+  - model: SiLK_MNN
+  - train: train_stage1
+

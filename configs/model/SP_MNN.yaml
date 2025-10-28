@@ -1,4 +1,4 @@
-name: SP_MNN
+name: EIM
 
 pretrain_stage1: 
   model_path: 
@@ -7,7 +7,7 @@ pretrain_stage2:
 
 event_extractor:
   type: vgg
-  freeze: true  # false by default
+  freeze: false  # false by default
   vgg:
     in_channels: 16
     feat_channels: 128
@@ -19,7 +19,7 @@ event_extractor:
     ordering: yx
     descriptor_scale_factor: 1.
     learnable_descriptor_scale_factor: false
-    use_batchnorm: True
+    use_batchnorm: true
   vgg_np:
     in_channels: 16
     feat_channels: 128
@@ -31,7 +31,7 @@ event_extractor:
     ordering: yx
     descriptor_scale_factor: 1.41
     learnable_descriptor_scale_factor: false
-    use_batchnorm: True
+    use_batchnorm: true
     padding: 1
 
 image_extractor:
@@ -67,5 +67,4 @@ matcher:
   LightGlue:
     ratio_thresh: false
     distance_thresh: false
-    input_dim: 256
     

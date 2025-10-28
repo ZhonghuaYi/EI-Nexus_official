@@ -1,9 +1,9 @@
-experiment: experiemnt_name
+experiment: nexus2_ec_stage1_SP_MNN
 resume: 
 
 logger:
   status_freq: 10
-  files_to_backup: ['train.py', 'val.py']
+  files_to_backup: ['train_extractor.py', 'val_extractor.py']
   dirs_to_backup: ['configs', 'core', 'datasets', 'utils']
 
 setup:
@@ -19,9 +19,9 @@ setup:
   local_rank: -1
 
 wandb:
-  key: your_own
-  project: project_name
-  group: group_name
+  key: c12cd6f9f3582bc27cb249e014c77aef34fb6732
+  project: nexus_test
+  group: EIM_stage1
   name: ${experiment}
   notes: 
   tags: []
@@ -31,7 +31,7 @@ wandb:
 
 defaults:
   - _self_
-  - dataset: mvsec
+  - dataset: ec
   - model: EIM_stage1
   - train: train_stage1
 

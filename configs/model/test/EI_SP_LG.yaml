@@ -1,0 +1,71 @@
+name: EI_SP_LG
+
+pretrain_stage1: 
+  model_path: 
+pretrain_stage2:
+  model_path: 
+
+event_extractor:
+  type: vgg
+  freeze: true  # false by default
+  vgg:
+    in_channels: 16
+    feat_channels: 128
+    descriptor_dim: 256
+    nms_radius: 4
+    detection_threshold: 1.0  # 0.005
+    detection_top_k: 1024
+    remove_borders: 4
+    ordering: yx
+    descriptor_scale_factor: 1.
+    learnable_descriptor_scale_factor: false
+    use_batchnorm: True
+  vgg_np:
+    in_channels: 16
+    feat_channels: 128
+    descriptor_dim: 128
+    nms_radius: 4
+    detection_threshold: 1.0
+    detection_top_k: 1024
+    remove_borders: 4
+    ordering: yx
+    descriptor_scale_factor: 1.41
+    learnable_descriptor_scale_factor: false
+    use_batchnorm: True
+    padding: 1
+
+image_extractor:
+  type: superpointv1  # superpoint, silk
+  freeze: true  # true by default
+  superpointv1:
+    descriptor_dim: 256
+    nms_radius: 4
+    detection_threshold: 1.0  # 0.005
+    detection_top_k: 1024
+    remove_borders: 4
+    ordering: yx
+    descriptor_scale_factor: 1.0
+    learnable_descriptor_scale_factor: false
+  silk:
+    padding: 1
+    nms_radius: 4
+    detection_threshold: 1.0
+    detection_top_k: 1024
+    remove_borders: 4
+    descriptor_scale_factor: 1.41
+    learnable_descriptor_scale_factor: false
+
+matcher:
+  type: LightGlue
+  freeze: true  
+  max_points_num: 1024
+  pad_mode: random
+  desc_scale_factor: 1.0
+  MNN:
+    ratio_thresh: false
+    distance_thresh: false
+  LightGlue:
+    ratio_thresh: false
+    distance_thresh: false
+    input_dim: 256
+    

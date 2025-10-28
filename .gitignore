@@ -6,6 +6,5 @@ wandb/
 runs/
 ckpts/
 *.pyc
-*.ckpt
 *.log
 *.npy

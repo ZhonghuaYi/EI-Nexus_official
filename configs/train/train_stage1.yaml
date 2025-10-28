@@ -11,10 +11,6 @@ loss:
       weight: 1.0
       mode: mse  # mse or mae or mse-whole
       use_mask: true
-    # LogitsLoss:
-    #   weight: 1.
-    #   mode: mse  # bce or mse
-    #   cell_size: 8
 
   descriptors_loss:
     type: DescriptorsLoss
@@ -44,7 +40,7 @@ loss:
 
 optimizer:
   type: AdamW
-  lr: 0.0001
+  lr: 0.001
   Adam:
     lr: ${train.optimizer.lr}
     weight_decay: 0.0001

@@ -63,7 +63,7 @@ def wandb_init(cfg: DictConfig):
     # wandb.run.log_code("./")
 
 
-@hydra.main(version_base=None, config_path="configs", config_name="train_EDM_stage1")
+@hydra.main(version_base=None, config_path="configs", config_name="train_EIM_stage1_MVSEC_SiLK_MNN")
 def main(cfg):
     # set up the environment
     setup(
@@ -112,7 +112,10 @@ def main(cfg):
     )
     logger.log_info(f"Logger: \n {cfg.logger}", rank)
     logger.log_info(f"Setup: \n {cfg.setup}", rank)
-    logger.log_info(f"DEVICES: {os.environ['CUDA_VISIBLE_DEVICES']}, {device}", rank)
+    if 'CUDA_VISIBLE_DEVICES' in os.environ:
+        logger.log_info(f"DEVICES: {os.environ['CUDA_VISIBLE_DEVICES']}, {device}", rank)
+    else:
+        logger.log_info(f"DEVICES: {device}", rank)
 
     # set up the dataset
     dataset_name = cfg.dataset.name
@@ -221,7 +224,6 @@ def main(cfg):
             # events mask
             events_mask = (data0["events_image"].to(device)) > 0
             # events_mask = torch.ones_like(data0['events_image']).to(device) > 0
-            image_mask = (data0["depth_mask"].to(device)) > 0
 
             # forward
             optimizer.zero_grad()
@@ -234,7 +236,7 @@ def main(cfg):
                 scaler.update()
             else:
                 # get the predictions
-                events_feats, image_feats, matches = model(events, image, events_mask, image_mask)
+                events_feats, image_feats, matches = model(events, image, events_mask, image_mask=None)
                 # calculate the loss on keypoints
                 keypoints_loss_value, kpts_loss_info = keypoints_loss(
                     events_feats, image_feats, events_mask
@@ -245,7 +247,7 @@ def main(cfg):
                 )
                 # calculate the feature loss
                 feature_loss_value, feature_loss_info = feature_loss(
-                    events_feats, image_feats, events_mask
+                    events_feats, image_feats
                 )
                 # calculate the total loss
                 loss = keypoints_loss_value + descriptors_loss_value + feature_loss_value
