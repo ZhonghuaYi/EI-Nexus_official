@@ -23,11 +23,11 @@ wandb:
   key: your_own_key
   project: test
   group: test
-  name: test
-  notes: only train event keypoints extractor
-  tags: [test]
+  name: ${experiment}
+  notes: 
+  tags: []
 
-  dryrun: true
+  dryrun: false
 
 
 defaults:

@@ -19,9 +19,9 @@ setup:
   local_rank: -1
 
 wandb:
-  key: your_own
-  project: project_name
-  group: group_name
+  key: your_own_key
+  project: test
+  group: test
   name: ${experiment}
   notes: 
   tags: []

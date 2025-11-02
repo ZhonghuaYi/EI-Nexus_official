@@ -19,9 +19,9 @@ setup:
   local_rank: -1
 
 wandb:
-  key: c12cd6f9f3582bc27cb249e014c77aef34fb6732
-  project: nexus_test
-  group: EIM_stage1
+  key: your_own_key
+  project: test
+  group: test
   name: ${experiment}
   notes: 
   tags: []
